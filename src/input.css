@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+@source "./LandingAnalyticsCore.html";
+@source "./assets/js/**/*.js";
+
+@theme {
+  --color-brand-50: #eef6ff;
+  --color-brand-100: #d9eaff;
+  --color-brand-200: #b2d4ff;
+  --color-brand-300: #84b8ff;
+  --color-brand-400: #5596f6;
+  --color-brand-500: #2a6fdb;
+  --color-brand-600: #1855b7;
+  --color-brand-700: #0f4293;
+  --color-brand-800: #0b3270;
+  --color-brand-900: #07224d;
+}

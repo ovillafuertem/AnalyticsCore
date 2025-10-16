@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Analytics Core | Consultoría Cloud, ETL con Python y Power BI</title>
+  <meta name="description" content="Consultoría en la nube (AWS/Azure), diseño de bases de datos, ETL en Python y dashboards en Power BI. Implementaciones listas para producción." />
+  <meta name="author" content="Ojany Villafuerte" />
+  <meta name="theme-color" content="#0b4da2" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Analytics Core | Consultoría Cloud, ETL con Python y Power BI" />
+  <meta property="og:description" content="Integramos AWS/Azure, PostgreSQL y Power BI para transformar datos en decisiones." />
+  <meta property="og:image" content="https://www.analyticscore.net/og-image.png" />
+  <meta property="og:url" content="https://www.analyticscore.net/" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Favicon-->
+  <link rel="icon" href="public/favicon.png" type="image/png" />
+  <link rel="preconnect" href="https://formspree.io" crossorigin />
+
+  <!-- Tailwind compilado -->
+  <link rel="preload" href="public/tailwind.css" as="style" />
+  <link rel="stylesheet" href="public/tailwind.css" />
+
+  <!-- Fuente del sistema para rendimiento -->
+  <style>
+    html {font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";}
+  </style>
+
+  <!-- Schema.org Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Analytics Core",
+    "url": "https://www.analyticscore.net/",
+    "logo": "https://www.analyticscore.net/logo.png",
+    "sameAs": [
+      "https://www.linkedin.com/",
+      "https://github.com/"
+    ],
+    "contactPoint": [{
+      "@type": "ContactPoint",
+      "contactType": "sales",
+      "email": "ojany.villafuerte@analyticscore.net",
+      "areaServed": "Guatemala"
+    }]
+  }
+  </script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+  <!-- NAV -->
+  <header class="sticky top-0 z-50 bg-white/80 backdrop-blur border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex h-16 items-center justify-between">
+        <a href="#inicio" class="flex items-center gap-2">
+            <img src="public/favicon.png" alt="Analytics Core" class="h-8 w-8 rounded-lg object-cover shadow-sm" />
+          <span class="font-semibold">Analytics Core</span>
+        </a>
+        <nav class="hidden md:flex items-center gap-6 text-sm" aria-label="Navegación principal">
+          <a href="#servicios" class="hover:text-brand-700">Servicios</a>
+          <a href="#portafolio" class="hover:text-brand-700">Casos</a>
+          <a href="#arquitectura" class="hover:text-brand-700">Arquitectura</a>
+          <a href="#sobre" class="hover:text-brand-700">Sobre mí</a>
+          <a href="#contacto" class="px-3 py-1.5 bg-brand-700 text-white rounded-lg hover:bg-brand-800">Agenda una llamada</a>
+        </nav>
+        <button id="btn-nav" class="md:hidden p-2 rounded-lg hover:bg-gray-100" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-nav">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+        </button>
+      </div>
+      <nav id="mobile-nav" class="md:hidden hidden pb-4" aria-label="Navegación principal móvil">
+        <a href="#servicios" class="block py-2">Servicios</a>
+        <a href="#portafolio" class="block py-2">Casos</a>
+        <a href="#arquitectura" class="block py-2">Arquitectura</a>
+        <a href="#sobre" class="block py-2">Sobre mí</a>
+        <a href="#contacto" class="block py-2 text-brand-700 font-medium">Agenda una llamada</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="inicio" class="relative overflow-hidden">
+    <div class="absolute inset-0 -z-10 bg-gradient-to-b from-brand-900 via-brand-800 to-brand-900" aria-hidden="true"></div>
+    <div class="absolute -top-24 -right-24 h-96 w-96 bg-brand-600/30 rounded-full blur-3xl" aria-hidden="true"></div>
+    <div class="max-w-7xl mx-auto px-6 py-24 lg:py-28 text-white">
+      <div class="max-w-3xl">
+        <div class="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-brand-100/80 backdrop-blur">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z"/>
+          </svg>
+          <span>Consultoría especializada en datos</span>
+        </div>
+        <h1 class="mt-6 text-4xl sm:text-5xl font-bold leading-tight">Consultoría Cloud, Business Intelligence y ETLs en Python listos para producción</h1>
+        <p class="mt-4 text-brand-100/90">Integramos AWS/Azure, PostgreSQL, MySQL, SQL Server y Power BI. Automatizamos pipelines con logs, validaciones y alertas para que tomes decisiones con datos confiables.</p>
+        <div class="mt-8 flex gap-3">
+          <a href="#contacto" class="inline-flex items-center gap-2 px-5 py-3 bg-white text-brand-800 rounded-xl font-semibold hover:bg-brand-50">
+            Agenda una consultoría
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/>
+            </svg>
+          </a>
+          <a href="#portafolio" class="px-5 py-3 border border-white/40 rounded-xl hover:bg-white/10">Ver casos</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST / TECH -->
+  <section class="bg-white border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-6 py-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6 place-items-center">
+      <span class="text-xs text-gray-500">AWS</span>
+      <span class="text-xs text-gray-500">Azure</span>
+      <span class="text-xs text-gray-500">Python</span>
+      <span class="text-xs text-gray-500">PostgreSQL</span>
+      <span class="text-xs text-gray-500">SQL Server</span>
+      <span class="text-xs text-gray-500">Power BI</span>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section id="servicios" class="max-w-7xl mx-auto px-6 py-16">
+    <div class="grid md:grid-cols-2 gap-10 items-start">
+      <div>
+        <h2 class="text-3xl font-bold">Servicios</h2>
+        <p class="mt-3 text-gray-600">Soluciones de datos de punta a punta, con enfoque en mantenibilidad, seguridad y costos.</p>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-6">
+        <article class="p-5 rounded-xl border bg-white shadow-sm hover:shadow-md transition">
+          <div class="flex items-start gap-3">
+            <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-brand-50 text-brand-700">
+              <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m6.75 7.5 3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0 0 21 18V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v12a2.25 2.25 0 0 0 2.25 2.25Z"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="font-semibold">ETL y Automatización</h3>
+              <p class="mt-2 text-sm text-gray-600">Pipelines en Python (pandas, psycopg2, SQLAlchemy), orquestación y logs.</p>
+            </div>
+          </div>
+          <ul class="mt-4 text-sm list-disc list-inside text-gray-700">
+            <li>Validación de dimensiones</li>
+            <li>Recargas incrementales</li>
+            <li>Alertas por correo (Graph API)</li>
+          </ul>
+        </article>
+        <article class="p-5 rounded-xl border bg-white shadow-sm hover:shadow-md transition">
+          <div class="flex items-start gap-3">
+            <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-brand-50 text-brand-700">
+              <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="font-semibold">Bases de Datos Cloud</h3>
+              <p class="mt-2 text-sm text-gray-600">Diseño y rendimiento en AWS RDS / Azure SQL, backups, monitoreo y seguridad.</p>
+            </div>
+          </div>
+          <ul class="mt-4 text-sm list-disc list-inside text-gray-700">
+            <li>Modelado estrella</li>
+            <li>PostgreSQL / SQL Server</li>
+            <li>Hardening & gobernanza</li>
+          </ul>
+        </article>
+        <article class="p-5 rounded-xl border bg-white shadow-sm hover:shadow-md transition">
+          <div class="flex items-start gap-3">
+            <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-brand-50 text-brand-700">
+              <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.75 3v11.25A2.25 2.25 0 0 0 6 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0 1 18 16.5h-2.25m-7.5 0h7.5m-7.5 0-1 3m8.5-3 1 3m0 0 .5 1.5m-.5-1.5h-9.5m0 0-.5 1.5m.75-9 3-3 2.148 2.148A12.061 12.061 0 0 1 16.5 7.605"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="font-semibold">Power BI</h3>
+              <p class="mt-2 text-sm text-gray-600">Dashboards ejecutivos y conectividad segura desde la nube.</p>
+            </div>
+          </div>
+          <ul class="mt-4 text-sm list-disc list-inside text-gray-700">
+            <li>Gateways y refresh</li>
+            <li>KPIs y storytelling</li>
+            <li>Mejores prácticas DAX</li>
+          </ul>
+        </article>
+        <article class="p-5 rounded-xl border bg-white shadow-sm hover:shadow-md transition">
+          <div class="flex items-start gap-3">
+            <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-brand-50 text-brand-700">
+              <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m21 7.5-2.25-1.313M21 7.5v2.25m0-2.25-2.25 1.313M3 7.5l2.25-1.313M3 7.5l2.25 1.313M3 7.5v2.25m9 3 2.25-1.313M12 12.75l-2.25-1.313M12 12.75V15m0 6.75 2.25-1.313M12 21.75V19.5m0 2.25-2.25-1.313m0-16.875L12 2.25l2.25 1.313M21 14.25v2.25l-2.25 1.313m-13.5 0L3 16.5v-2.25"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="font-semibold">Arquitectura de Datos</h3>
+              <p class="mt-2 text-sm text-gray-600">Diseño de soluciones de datos end-to-end en AWS/Azure.</p>
+            </div>
+          </div>
+          <ul class="mt-4 text-sm list-disc list-inside text-gray-700">
+            <li>Landing/Curated/Serving</li>
+            <li>Cost optimization</li>
+            <li>Seguridad y cumplimiento</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTAFOLIO / CASOS -->
+  <section id="portafolio" class="bg-gray-100">
+    <div class="max-w-7xl mx-auto px-6 py-16">
+      <div class="flex items-end justify-between">
+        <h2 class="text-3xl font-bold">Casos de éxito</h2>
+        <a href="#contacto" class="text-brand-700 hover:underline">¿Hablamos de tu caso?</a>
+      </div>
+      <div class="mt-8 grid md:grid-cols-3 gap-6">
+        <article class="bg-white rounded-xl border shadow-sm p-5">
+          <h3 class="font-semibold">Optimización de inventarios con analítica predictiva</h3>
+          <p class="text-sm text-gray-600 mt-2">Modelos de pronóstico en Python + Power BI con datos históricos de ventas e inventario desde SAP y hojas Excel. Predicciones semanales para reducir quiebres de stock y sobreinventario.</p>
+          <ul class="mt-3 text-sm text-gray-700 list-disc list-inside">
+            <li>Reducción del 18 % en stock inmovilizado</li>
+            <li>Predicción de demanda con 92 % de precisión</li>
+            <li>Alertas automáticas de productos críticos</li>
+          </ul>
+        </article>
+        <article class="bg-white rounded-xl border shadow-sm p-5">
+          <h3 class="font-semibold">Monitoreo financiero automatizado</h3>
+          <p class="text-sm text-gray-600 mt-2">Automatización de reportes contables desde ERP Oracle hacia Power BI con pipelines diarios en Azure Data Factory. Validación de asientos, control de gastos y análisis de rentabilidad por centro de costo.</p>
+          <ul class="mt-3 text-sm text-gray-700 list-disc list-inside">
+            <li>Reducción de 80 % en tiempo de cierre mensual</li>
+            <li>Trazabilidad completa de operaciones</li>
+            <li>Implementación de políticas de gobernanza y seguridad</li>
+          </ul>
+        </article>
+        <article class="bg-white rounded-xl border shadow-sm p-5">
+          <h3 class="font-semibold">Customer 360 y segmentación avanzada</h3>
+          <p class="text-sm text-gray-600 mt-2">Integración de fuentes CRM, e-commerce y atención al cliente en Azure Synapse + Power BI. Modelo unificado de clientes con métricas de comportamiento y valor de vida útil (CLV).</p>
+          <ul class="mt-3 text-sm text-gray-700 list-disc list-inside">
+            <li>1.2 M de registros consolidados en modelo único</li>
+            <li>Incremento del 25 % en retención de clientes</li>
+            <li>Dashboards dinámicos por segmento y canal</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARQUITECTURA (diagrama simple SVG) -->
+  <section id="arquitectura" class="max-w-7xl mx-auto px-6 py-16">
+    <h2 class="text-3xl font-bold">Arquitectura de referencia</h2>
+    <p class="mt-3 text-gray-600">Flujo típico de datos implementado en proyectos de producción.</p>
+    <div class="mt-8 overflow-x-auto">
+      <div class="min-w-[720px] p-6 rounded-xl border bg-white">
+        <div class="grid grid-cols-4 gap-6 text-sm">
+          <div class="p-4 rounded-lg border bg-gray-50 text-center">
+            <div class="font-semibold">Fuentes</div>
+            <div class="text-gray-600 mt-2">CSV/Excel · APIs · SAP · SQL</div>
+          </div>
+          <div class="p-4 rounded-lg border bg-gray-50 text-center">
+            <div class="font-semibold">ETL Python</div>
+            <div class="text-gray-600 mt-2">Pandas · Validaciones · Logs</div>
+          </div>
+          <div class="p-4 rounded-lg border bg-gray-50 text-center">
+            <div class="font-semibold">DW (RDS)</div>
+            <div class="text-gray-600 mt-2">PostgreSQL · Modelo Estrella</div>
+          </div>
+          <div class="p-4 rounded-lg border bg-gray-50 text-center">
+            <div class="font-semibold">BI</div>
+            <div class="text-gray-600 mt-2">Power BI · KPIs</div>
+          </div>
+        </div>
+        <div class="mt-6 h-1 bg-gradient-to-r from-brand-600 via-brand-400 to-brand-600 rounded-full"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EQUIPO -->
+  <section id="sobre" class="bg-white border-y">
+    <div class="max-w-7xl mx-auto px-6 py-16 space-y-12">
+      <div class="max-w-2xl">
+        <h2 class="text-3xl font-bold">Conoce al equipo</h2>
+        <p class="mt-3 text-gray-700">Combinamos estrategia analítica y ejecución técnica para entregar soluciones de datos que escalan. Cada proyecto es acompañado por especialistas en arquitectura, automatización y visualización.</p>
+      </div>
+      <div class="grid gap-10 md:grid-cols-2">
+        <article class="flex flex-col gap-4 rounded-2xl border bg-gray-50 p-6 shadow-sm">
+          <div class="flex items-center gap-4">
+            <img src="assets/img/ojany.jpg" alt="Ojany Villafuerte" class="h-20 w-20 rounded-full object-cover shadow-md" loading="lazy" />
+            <div>
+              <h3 class="text-xl font-semibold">Ojany Villafuerte</h3>
+              <p class="text-sm font-medium text-brand-700">Fundador & Arquitecto de Soluciones BI</p>
+            </div>
+          </div>
+          <p class="text-sm text-gray-700">Especialista en arquitectura de datos en AWS y Azure, ETLs con Python y dashboards ejecutivos. Asegura que cada solución sea mantenible, segura y alineada a objetivos de negocio.</p>
+          <ul class="space-y-1 text-sm text-gray-700 list-disc list-inside">
+            <li>Modelado en PostgreSQL y SQL Server</li>
+            <li>Automatización con monitoreo, logs y alertas</li>
+            <li>Diseño de data lakes y data warehouses</li>
+          </ul>
+        </article>
+        <article class="flex flex-col gap-4 rounded-2xl border bg-gray-50 p-6 shadow-sm">
+          <div class="flex items-center gap-4">
+            <img src="assets/img/jose.jpg" alt="José González" class="h-20 w-20 rounded-full object-cover shadow-md" loading="lazy" />
+            <div>
+              <h3 class="text-xl font-semibold">José González</h3>
+              <p class="text-sm font-medium text-brand-700">Director de Estrategia y Analítica</p>
+            </div>
+          </div>
+          <p class="text-sm text-gray-700">Economista y especialista en Business Intelligence y Analytics. Lidera el diseño de estrategias analíticas, visualizaciones de alto impacto y modelos que aceleran la toma de decisiones.</p>
+          <ul class="space-y-1 text-sm text-gray-700 list-disc list-inside">
+            <li>Storytelling y visualización en Power BI</li>
+            <li>Modelos predictivos y financieros</li>
+            <li>Experiencia en consumo masivo, banca y comercio exterior</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" class="max-w-7xl mx-auto px-6 py-16">
+    <div class="max-w-3xl">
+      <h2 class="text-3xl font-bold">Agenda una consultoría</h2>
+      <p class="mt-3 text-gray-600">Cuéntame brevemente tu caso. Te respondo en 24h hábiles.</p>
+    </div>
+    <form id="form-contacto" class="mt-8 grid md:grid-cols-2 gap-6 bg-white p-6 rounded-2xl border shadow-sm" action="https://formspree.io/f/xbldaypl" method="POST">
+      <div>
+        <label class="block text-sm font-medium">Nombre</label>
+        <input name="nombre" required class="mt-1 w-full rounded-lg border-gray-300 focus:border-brand-600 focus:ring-brand-600" placeholder="Tu nombre" />
+      </div>
+      <div>
+        <label class="block text-sm font-medium">Correo</label>
+        <input name="correo" type="email" required class="mt-1 w-full rounded-lg border-gray-300 focus:border-brand-600 focus:ring-brand-600" placeholder="tucorreo@empresa.com" />
+      </div>
+      <div class="md:col-span-2">
+        <label class="block text-sm font-medium">Interés</label>
+        <select name="interes" class="mt-1 w-full rounded-lg border-gray-300 focus:border-brand-600 focus:ring-brand-600">
+          <option>ETL y Automatización</option>
+          <option>Bases de Datos en AWS/Azure</option>
+          <option>Power BI</option>
+          <option>Arquitectura de Datos</option>
+        </select>
+      </div>
+      <div class="md:col-span-2">
+        <label class="block text-sm font-medium">Mensaje</label>
+        <textarea name="mensaje" rows="5" required class="mt-1 w-full rounded-lg border-gray-300 focus:border-brand-600 focus:ring-brand-600" placeholder="Cuéntame de tu necesidad y objetivos (tiempo, presupuesto, entregables)"></textarea>
+      </div>
+      <div class="md:col-span-2 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <div class="text-sm text-gray-500">Al enviar aceptas nuestro <a href="aviso-privacidad.html" class="underline">Aviso de Privacidad</a>.</div>
+        <button type="submit" class="px-5 py-3 bg-brand-700 text-white rounded-xl font-semibold hover:bg-brand-800 disabled:opacity-50 disabled:cursor-not-allowed" data-submit>Enviar</button>
+      </div>
+      <p class="md:col-span-2 text-sm text-gray-500 min-h-[1.25rem]" data-status aria-live="polite" role="status"></p>
+    </form>
+    <div class="mt-6 flex items-center gap-3 text-sm text-gray-600">
+      <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-brand-50 text-brand-700" aria-hidden="true">
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"/>
+        </svg>
+      </span>
+      <span>O bien, escríbeme a <a class="text-brand-700 hover:underline" href="mailto:ojany.villafuerte@analyticscore.net">ojany.villafuerte@analyticscore.net</a></span>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-brand-900 text-brand-100">
+    <div class="max-w-7xl mx-auto px-6 py-10 grid md:grid-cols-3 gap-8">
+      <div>
+        <div class="flex items-center gap-2">
+          <link rel="icon" href="public/favicon.png" type="image/png" />
+          <span class="font-semibold">Analytics Core</span>
+        </div>
+        <p class="mt-3 text-sm text-brand-200">Consultoría Cloud, ETLs y BI.</p>
+      </div>
+      <div>
+        <div class="font-semibold">Secciones</div>
+        <ul class="mt-3 space-y-2 text-sm">
+          <li><a href="#servicios" class="hover:underline">Servicios</a></li>
+          <li><a href="#portafolio" class="hover:underline">Casos</a></li>
+          <li><a href="#arquitectura" class="hover:underline">Arquitectura</a></li>
+          <li><a href="#contacto" class="hover:underline">Contacto</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="font-semibold">Contacto</div>
+        <ul class="mt-3 space-y-3 text-sm">
+          <li class="flex items-center gap-3">
+            <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-brand-800 text-brand-200" aria-hidden="true">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"/>
+              </svg>
+            </span>
+            <a class="hover:underline" href="mailto:ojany.villafuerte@analyticscore.net">ojany.villafuerte@analyticscore.net</a>
+          </li>
+          <li class="flex items-center gap-3 text-brand-200">
+            <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-brand-800/50 text-brand-100" aria-hidden="true">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/>
+              </svg>
+            </span>
+            <span>Guatemala</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-brand-800">
+      <div class="max-w-7xl mx-auto px-6 py-6 text-xs text-brand-300 flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between">
+        <div>© <span id="y"></span> Analytics Core. Todos los derechos reservados.</div>
+        <div class="space-x-4">
+          <a href="aviso-privacidad.html" class="hover:underline">Aviso de Privacidad</a>
+          <a href="privacidad.html" class="hover:underline">Política</a>
+          <a href="terminos.html" class="hover:underline">Términos</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="assets/js/main.js" defer></script>
+
+  <!-- Analytics (opcional). Sustituye por tu script de GA/Plausible. -->
+  <!-- <script defer data-domain="analyticscore.net" src="https://plausible.io/js/script.js"></script> -->
+</body>
+</html>
