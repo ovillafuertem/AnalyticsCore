@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-@source "./LandingAnalyticsCore.html";
+@source "./index.html";
 @source "./assets/js/**/*.js";
 
 @theme {
