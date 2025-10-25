@@ -18,12 +18,12 @@ npm run watch:css   # Reconstruye estilos al editar
 
 ```bash
 python3 -m http.server 8000
-# Visita http://localhost:8000/ (redirige a LandingAnalyticsCore.html)
+# Visita http://localhost:8000/
 ```
 
 ## Estructura
 
-- `LandingAnalyticsCore.html`: landing principal.
+- `index.html`: landing principal.
 - `assets/js/main.js`: interacción mínima (menú móvil y formulario).
 - `public/tailwind.css`: estilos compilados.
 - `privacidad.html`, `aviso-privacidad.html`, `terminos.html`: páginas legales.
