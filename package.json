@@ -14,5 +14,8 @@
   "devDependencies": {
     "@tailwindcss/cli": "^4.1.14",
     "tailwindcss": "^4.1.14"
+  },
+  "dependencies": {
+    "simple-icons": "^15.17.0"
   }
 }
