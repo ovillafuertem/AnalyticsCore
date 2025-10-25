@@ -32,3 +32,4 @@ python3 -m http.server 8000
 
 1. Ejecuta `npm run build:css`.
 2. Publica el contenido del repositorio en tu hosting (GitHub Pages, Vercel, S3/CloudFront, etc.).
+redeploy trigger Fri Oct 24 09:39:08 PM CST 2025
